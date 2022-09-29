@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+{% block container %}
+
+
+      <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-lg-5 col-md-7 mx-auto my-auto">
+                <div class="card">
+                    <div class="card-body px-lg-5 py-lg-5 text-center">
+                        <img src="{{avatar}}" class="rounded-circle avatar-lg img-thumbnail mb-4" alt="profile-image">
+                        <a style="text-decoration: none;" href="{{link}}"><h3 class="text-info">@{{username}}</h3></a>
+                        {% if name != None %}
+                        <p><b>Name : </b><i>{{name}}</i></p>
+                        {% endif %}
+                        {% if bio != None %}
+                        <p><b>Bio : </b><i>{{bio}}</i></p>
+                        {% endif %}
+                        {% if location != None %}
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                          </svg>: {{location}}</p>
+                        {% endif %}
+                        
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                            <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+                          </svg> : {{repository}}</p>
+                        
+                        
+                       <p> <b>followers : </b><i>{{followers}}</i></p>
+                       <p> <b>following : </b><i>{{following}}</i></p>
+                        <p><b>Create Profile : </b><i>{{create_date}}</i></p>
+                        <p><b>Last Update Profile : </b><i>{{update_date}}</i></p>
+                        {% comment %} {{repolist}} {% endcomment %}
+                        {% if repolist|length != 0 %}
+                        <hr>
+                        <h3>All public Repository</h3>
+                        {% for r in repolist %}
+                        <span><a href="{{r.html_url}}" class="btn btn-outline-info">{{forloop.counter}} {{r.name}}</a></span>
+                    
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+ 
+
+
+
+{% endblock  %}
+
+
+
